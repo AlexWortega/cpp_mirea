@@ -105,7 +105,7 @@ void first(){
     cin>>r;
     cout<<" input h"<<endl;
     cin>>h;
-    l=sqrt(((R-r)*(R-r)*pow(h,2)));
+    l=sqrt(((R-r)*(R-r)+pow(h,2)));
     V = (R*R + 2*r*R +r*r)/3;
     S = PI*(R*R +(r+R)*l +r*r);
     cout<<"V"<<" "<<V<<endl;
@@ -138,8 +138,21 @@ void gcd(){
 
 
 void resheto (){
-
-
+    int n;
+    cout << "input n "<<endl;
+    cin >> n;
+    int *a = new int[n + 1];
+    for (int i = 0; i < n + 1; i++)
+        a[i] = i;
+    for (int p = 2; p < n + 1; p++)
+    {
+        if (a[p] != 0)
+        {
+            cout << a[p] << endl;
+            for (int j = p*p; j < n + 1; j += p)
+                a[j] = 0;
+        }
+    }
 
 }
 int main()
