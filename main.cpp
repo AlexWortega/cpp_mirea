@@ -1,6 +1,7 @@
 //#include<windows.h>
 #include<iostream>
 #include <cmath>
+#include <vector>
 #include <fstream>
 using namespace std;
 
@@ -84,7 +85,7 @@ void forth() {
 }
 
 void second() {
-    int a,x;
+    float a,x;
 
     cout<< "input x"<<endl;
 
@@ -97,15 +98,16 @@ void second() {
 }
 void first(){
     float V,S;
-    float R,h,r;
+    float R,h,r,l;
     cout<<"input R"<<endl;
     cin>>R;
     cout<<"imput r"<<endl;
     cin>>r;
-    cout<<" input l"<<endl;
+    cout<<" input h"<<endl;
     cin>>h;
+    l=sqrt(((R-r)*(R-r)*pow(h,2)));
     V = (R*R + 2*r*R +r*r)/3;
-    S = PI*(R*R +(r+R)*h +r*r);
+    S = PI*(R*R +(r+R)*l +r*r);
     cout<<"V"<<" "<<V<<endl;
     cout<<"S"<<" "<<S<<endl;
 
@@ -129,7 +131,17 @@ void gcd(){
 
 
 }
+//void svet (){
+    //string sh,l,d;
+    //cout<<"sh"<<endl;
+   // cin >> sh;
 
+
+void resheto (){
+
+
+
+}
 int main()
 {
 
@@ -149,6 +161,7 @@ int main()
     if (task_number==8){eight();}
     if (task_number==9){ nine();}
     if (task_number==19){gcd();}
-    else{cout<<"try again wrong number";}
+    if(task_number==20){resheto();}
+ //   else{cout<<"try again wrong number";}
     return 0;
 }
