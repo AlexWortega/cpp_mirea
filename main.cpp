@@ -2,7 +2,11 @@
 #include<iostream>
 #include <cmath>
 #include <vector>
+//#include <fstream>
+//#include <graph>
 #include <fstream>
+#include <string>
+#include <algorithm>
 using namespace std;
 
 #define PI 3.14
@@ -137,6 +141,8 @@ void gcd(){
    // cin >> sh;
 
 
+
+
 void resheto (){
     int n;
     cout << "input n "<<endl;
@@ -154,6 +160,74 @@ void resheto (){
         }
     }
 
+}
+void print (string xui){
+
+    //cout << xui;
+
+
+}
+void copypaste(){
+
+
+
+    string line;
+    char k;
+    int number;
+    ifstream myfile ("example.txt");
+    if (myfile.is_open())
+    {
+        while ( getline (myfile,line) )
+        {
+            cout<< line;
+        }
+        myfile.close();
+    }
+
+    else cout << "Unable to open file";
+}
+void filtr ()
+{
+    string line;
+    char k;
+    int number;
+    ifstream myfile ("example.txt");
+    if (myfile.is_open())
+    {
+        while ( getline (myfile,line) )
+        {
+            number = line.length();
+            for (int i = 0 ; i< number;i++)
+            {
+                k = line[i];
+                if(isdigit(k))
+                {
+                    cout<< line[i];
+
+                }
+
+            }
+        }
+        myfile.close();
+    }
+
+    else cout << "Unable to open file";
+
+}
+void sort()
+{
+ char chr;
+ int number = 0;
+ string cach[28];
+ //string alph_ideal = "abcdefghijklmnopqrstuvwxy" ;
+ string aplh = "pqrstuvwxyabcdefghijklmno";
+ number  = aplh.length();
+ for(int i =0; i< number;++i)
+ {
+  cach[i] = aplh[i];
+ }
+sort(begin(cach),end(cach));
+ for(auto& s: cach){cout<<s<<" ";}
 }
 int main()
 {
@@ -173,6 +247,9 @@ int main()
     if(task_number==5){five();}
     if (task_number==8){eight();}
     if (task_number==9){ nine();}
+    if (task_number == 10){copypaste();}
+    if(task_number==11){filtr();}
+    if(task_number==13 ){sort();}
     if (task_number==19){gcd();}
     if(task_number==20){resheto();}
  //   else{cout<<"try again wrong number";}
