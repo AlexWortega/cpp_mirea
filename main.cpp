@@ -168,7 +168,7 @@ void print (string xui){
 
 }
 void copypaste(){
-
+//копирование
 
 
     string line;
@@ -188,6 +188,7 @@ void copypaste(){
 }
 void filtr ()
 {
+    //фильтр
     string line;
     char k;
     int number;
@@ -216,6 +217,7 @@ void filtr ()
 }
 void sort()
 {
+    //сортировка
  char chr;
  int number = 0;
  string cach[28];
@@ -229,6 +231,119 @@ void sort()
 sort(begin(cach),end(cach));
  for(auto& s: cach){cout<<s<<" ";}
 }
+int znakchisla(int x)
+{
+if (x>0){ return 1;}
+else if(x==0){return 0;}
+else { return -1;}
+}
+void znak()
+{
+    //знак числа
+
+    int a;
+    cout<<" input number";
+    cin>> a;
+    cout<<znakchisla(a);
+}
+void generator(){
+    //генератор чисел
+    int m = 37;
+    int i = 3;
+
+    int c = 64;
+    int s =0;
+    for(int k =0 ; k<20 ;++k)
+    {
+        s = (m*s+i) % c;
+        cout<< s<<" ";
+    }
+
+
+}
+void next(){
+    string line;
+    int number;
+    int sum = 0;
+    char k;
+    ifstream myfile ("example.txt");
+    if (myfile.is_open())
+    {
+        while ( getline (myfile,line) )
+        {
+            number = line.length();
+            for (int i = 0 ; i< number;i++)
+            {
+                k = line[i];
+                if(isdigit(k))
+                {
+                    sum = sum+int(k) ;
+
+                }
+
+            }
+        }
+        cout<< sum;
+        myfile.close();
+
+    }
+
+    else cout << "Unable to open file";
+}
+void fail()
+{
+    string line ;
+    ofstream myfile("example.txt",std::ios::app);
+    if (myfile.is_open())
+    {
+
+            myfile << "456";
+
+
+        myfile.close();
+    }
+    else cout << "Unable to open file";
+next();
+}
+void zvezdocki(){
+    for(int i = 0; i<12; ++i)
+    {
+        cout<<"*";
+    }
+    //вывод 12 звездочек
+
+}
+void palochki(int n){
+
+    for(int i = 0; i<n ; ++i)
+    {
+        cout<<"=";
+    }
+}
+void lastglory()
+{
+   int rows = 4 ;
+   bool raw_start = true;
+   int coll = 12;
+   for(int i = 0; i<13; ++i)
+   {
+       if (i!= 0 && i<5)
+       {
+           //по сути выводим звездочки с первого по 5 ряд
+           zvezdocki();
+           palochki(20);
+          // cout<<endl;
+       }
+        //палочки с 5 по какой то там ряд
+        if (i>=5 && i<14){palochki(32);}
+        //господи мне правда лень написать <=13?
+        cout<<endl;
+       }
+
+
+   }
+
+
 int main()
 {
 
@@ -250,6 +365,10 @@ int main()
     if (task_number == 10){copypaste();}
     if(task_number==11){filtr();}
     if(task_number==13 ){sort();}
+    if (task_number==14){znak();}
+    if(task_number == 15){generator();}
+    if(task_number==16){fail();}
+    if(task_number==17){lastglory();}
     if (task_number==19){gcd();}
     if(task_number==20){resheto();}
  //   else{cout<<"try again wrong number";}
