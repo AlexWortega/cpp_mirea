@@ -8,15 +8,19 @@
 #include<iostream>
 #include <cmath>
 #include <vector>
-//#include <fstream>
-//#include <graph>
+//#include <random>
 #include <fstream>
 #include <string>
 #include <algorithm>
+#include <cstdlib>
+#include <windows.h>
+//#include <dos.h>
+//#include<graphics.h>
 using namespace std;
 
 #define PI 3.14
 //task first laba nomer dva
+
 float triangle(int storona){
 
     float S = (storona*storona*sqrt(3))/(4);
@@ -251,6 +255,7 @@ void znak()
     cout<<" input number";
     cin>> a;
     cout<<znakchisla(a);
+
 }
 void generator(){
     //генератор чисел
@@ -278,12 +283,20 @@ void next(){
         while ( getline (myfile,line) )
         {
             number = line.length();
+           // for (int i = 0 ; i< number;i++)
+          //  {
+          //      line[i] = rand();
+                //надо было его доделать но мне так лень
+
+         //   }
             for (int i = 0 ; i< number;i++)
-            {
+            {   //cout<<line<<endl;
                 k = line[i];
                 if(isdigit(k))
                 {
-                    sum = sum+int(k) ;
+                    //cout<<int(k)<<endl;
+                   // cout<<sum<<endl;
+                    sum = sum+int(k)-48 ;
 
                 }
 
@@ -296,14 +309,17 @@ void next(){
 
     else cout << "Unable to open file";
 }
+
 void fail()
 {
+    string  input;
     string line ;
     ofstream myfile("example.txt",std::ios::app);
     if (myfile.is_open())
     {
-
-            myfile << "456";
+        cout<<"input=`";
+         cin>>input;
+         myfile << input <<endl;
 
 
         myfile.close();
@@ -311,6 +327,8 @@ void fail()
     else cout << "Unable to open file";
 next();
 }
+
+
 void zvezdocki(){
     for(int i = 0; i<12; ++i)
     {
@@ -353,12 +371,54 @@ void lastglory()
 //или закодить
 //хммммммммммммммммммммммммммммммммммммммммммммммммммммммммммммм
 //не лень
-//пойдй писать на пухтоне
-
-int main()
+//пойдй писать на пухтоне  ыыыыыыыыыы пухтон топ
+void printSinWave(int wave_height, int wave_length)
 {
 
+    int is = 1, os = 2;
 
+
+    for (int i = 1; i <= wave_height; i++) {
+
+
+        for (int j = 1; j <= wave_length; j++) {
+
+            for (int k = 1; k <= os; k++) {
+                printf(" ");
+            }
+
+
+            printf("*");
+
+            for (int k = 1; k <= is; k++)
+                printf(" ");
+
+
+            printf("*");
+
+            for (int k = 1; k <= os; k++)
+                printf(" ");
+
+            printf(" ");
+        }
+
+
+        os = (i + 1 != wave_height);
+
+
+        is = (i + 1 != wave_height) ? 3 : 5;
+
+        printf("\n");
+    }
+}
+int sinus()
+{
+    printSinWave(5,10);
+    return 0;
+
+}
+
+void opros(){
     int task_number;
 
     cout<<"Enter task number"<<endl;
@@ -380,8 +440,17 @@ int main()
     if(task_number == 15){generator();}
     if(task_number==16){fail();}
     if(task_number==17){lastglory();}
+    if(task_number==18){sinus();}
     if (task_number==19){gcd();}
     if(task_number==20){resheto();}
+
+
+}
+int main()
+{
+    //оптимизировать
+
+   opros();
  //   else{cout<<"try again wrong number";}
     return 0;
 }
