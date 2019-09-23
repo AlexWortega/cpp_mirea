@@ -55,10 +55,22 @@ void nine(){
 }
 
 void eight(){
-   // ofstream out("C:\\Users\\alexd\\OneDrive\\Desktop");
-    //out << "HelloWorld" << '\n';
-    //out << "UraRabotaet!!!" << '\n';
-   // out.close(); //Закрываем файл
+    float  r,m;
+    float S,p,n;
+    p = 1;
+    cout<<"Input S"<<endl;
+    cin>>S;
+    cout<<"Input m"<<endl;
+    cin>>m;
+    cout<<"Input n"<<endl;
+    cin>>n;
+    r= p/100;
+    while (m =! (S*r*pow(1+r,n))/(12*(pow(1+r,n)-1))){
+        p++;
+
+    }
+    cout<<p;
+
 
 }
 void six(){
