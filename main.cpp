@@ -66,7 +66,7 @@ void eight(){
     cin>>n;
     r= p/100;
     while (m =! (S*r*pow(1+r,n))/(12*(pow(1+r,n)-1))){
-        p++;
+        p=p+0.000001;
 
     }
     cout<<p;
@@ -429,6 +429,58 @@ int sinus()
     return 0;
 
 }
+void autodetect()
+{
+    int number,sum,col;
+    sum = 0;
+    col = 0;
+    string input;
+    cout<<"rome input I-1 V-5 X-10 L-50 C-100 D-500 M-1000"<<endl;
+    cin>>input;
+    number = input.length();
+    for(int i = 0;i<=number;++i)
+    {
+
+        if(input[i]=='I')
+        {
+            sum= sum+1;
+            col++;
+        }
+        if(input[i]=='V')
+        {
+            sum= sum+5;
+            col++;
+        }
+        if(input[i]=='X')
+        {
+            sum= sum+10;
+            col++;
+        }
+        if(input[i]=='L')
+        {
+            sum= sum+50;
+            col++;
+        }
+        if(input[i]=='C')
+        {
+            sum= sum+100;
+            col++;
+        }
+        if(input[i]=='D')
+        {
+            sum= sum+500;
+            col++;
+        }
+        if(input[i]=='M')
+        {
+            sum= sum+1000;
+            col++;
+        }
+    }
+if(col==number){cout<<sum;}
+else cout<<sum<<"something input noncorect";
+}
+
 
 void opros(){
     int task_number;
@@ -455,7 +507,7 @@ void opros(){
     if(task_number==18){sinus();}
     if (task_number==19){gcd();}
     if(task_number==20){resheto();}
-
+    if(task_number==21){autodetect();}
 
 }
 int main()
