@@ -55,9 +55,11 @@ void nine(){
 }
 
 void eight(){
-    float  r,m;
-    float S,p,n;
-    p = 1;
+    double  r,m;
+    double S,p,n,otvet;
+
+    p = 0;
+    //r=0;
     cout<<"Input S"<<endl;
     cin>>S;
     cout<<"Input m"<<endl;
@@ -65,11 +67,15 @@ void eight(){
     cout<<"Input n"<<endl;
     cin>>n;
     r= p/100;
-    while (m =! (S*r*pow(1+r,n))/(12*(pow(1+r,n)-1))){
-        p=p+0.000001;
+        for(double r=0;r<1; r+=0.01){
+              // r=r+0.01;
+            //cout<<r<<" ";
+           if(((S*r*pow(1+r,n))/(12*(pow(1+r,n)-1))-m)<0.01) {otvet=r;
+               }
+
 
     }
-    cout<<p;
+    cout<<otvet*100+1;
 
 
 }
@@ -430,7 +436,7 @@ int sinus()
 
 }
 void autodetect()
-{
+{    bool minus = false;
     int number,sum,col;
     sum = 0;
     col = 0;
@@ -441,6 +447,7 @@ void autodetect()
     for(int i = 0;i<=number;++i)
     {
 
+        if(input[i]=='-'){minus=true; }
         if(input[i]=='I')
         {
             sum= sum+1;
@@ -477,7 +484,7 @@ void autodetect()
             col++;
         }
     }
-if(col==number){cout<<sum;}
+if(col==number ){cout<<sum;}
 else cout<<sum<<"something input noncorect";
 }
 
