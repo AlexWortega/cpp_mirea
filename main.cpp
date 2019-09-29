@@ -489,39 +489,58 @@ else cout<<sum<<"something input noncorect";
 }
 
 
-void opros(){
-    int task_number;
+int opros(){
+	int task_number;
 
-    cout<<"Enter task number"<<endl;
-    cout<<"for third from 3 to 7"<<endl;
-    cout<<"for forth laba mark from 11-19"<<endl;
-    cout<<"for euklid algo please input 19 "<<endl;
-    cin>>task_number;
-    if (task_number==1){first();}
-    if (task_number==2){second();}
-    if(task_number==4){forth();}
-    if (task_number==6){six();}
-    if(task_number==5){five();}
-    if (task_number==8){eight();}
-    if (task_number==9){ nine();}
-    if (task_number == 10){copypaste();}
-    if(task_number==11){filtr();}
-    if(task_number==13 ){sort();}
-    if (task_number==14){znak();}
-    if(task_number == 15){generator();}
-    if(task_number==16){fail();}
-    if(task_number==17){lastglory();}
-    if(task_number==18){sinus();}
-    if (task_number==19){gcd();}
-    if(task_number==20){resheto();}
-    if(task_number==21){autodetect();}
-
+	cout<<"Enter task number"<<endl;
+	cout<<"for third from 3 to 7"<<endl;
+	cout<<"for forth laba mark from 11-19"<<endl;
+	cout<<"for euklid algo please input 19 "<<endl;
+	cin>>task_number;
+	if (task_number==1){first();
+		return 0;}
+	else if (task_number==2){second();
+		return 0;}
+	else if(task_number==4){forth();
+		return 0;}
+	else if (task_number==6){six();
+		return 0;}
+	else if(task_number==5){five();
+		return 0;}
+	else if (task_number==8){eight();
+		return 0;}
+	else if (task_number==9){ nine();
+		return 0;}
+	else if (task_number == 10){copypaste();
+		return 0;}
+	else if(task_number==11){filtr();
+		return 0;}
+	else if(task_number==13 ){sort();
+		return 0;}
+	else if (task_number==14){znak();
+		return 0;}
+	else if(task_number == 15){generator();
+		return 0;}
+	else if(task_number==16){fail();
+		return 0;}
+	else if(task_number==17){lastglory();
+		return 0;}
+	else if(task_number==18){sinus();
+		return 0;}
+	else if (task_number==19){gcd();
+		return 0;}
+	else if(task_number==20){resheto();
+		return 0;}
+	else if(task_number==21){autodetect();
+		return 0;}
+	return 1;
 }
 int main()
 {
-    //оптимизировать
+	int i;
 
-   opros();
- //   else{cout<<"try again wrong number";}
-    return 0;
+	i = opros();
+	if (i == 1)
+		cout<<"try again wrong number";
+	return 0;
 }
