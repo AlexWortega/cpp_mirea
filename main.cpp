@@ -540,7 +540,10 @@ int main()
 	int i;
 
 	i = opros();
-	if (i == 1)
+	while (i == 1)
+	{
 		cout<<"try again wrong number";
+		i = opros();
+	}
 	return 0;
 }
