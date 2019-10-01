@@ -489,7 +489,51 @@ cout<<"octo-"<<oct<<i;
 
 
 }
+void da_pohui(string line)
+{
+    ofstream myfile ("example.txt");
 
+
+
+       myfile << line<<endl;
+      //&line++;
+    //}
+
+}
+void Fail_sos()
+{
+    string line;
+    int number;
+    int sum = 0;
+    //char k;
+   // const char probel = ' ';
+    const char  sym = '_';
+    ifstream myfile ("example.txt");
+    if (myfile.is_open())
+    {
+        while ( getline (myfile,line) )
+        {
+            number = line.length();
+            for (int i = 0 ; i< number;i++)
+            {   //cout<<line<<endl;
+                line[i]='h';
+                if(line[i]==32)
+                {
+                     line[i] = sym;
+
+                     sum++;
+                }
+
+            }
+        }
+        cout<< sum;
+        myfile.close();
+
+    }
+
+    else cout << "Unable to open file";
+
+}
 
 void fail_sys()
 {
@@ -523,6 +567,23 @@ void fail_sys()
         cout<<sum[i]<<endl;
     }
 }
+void rays()
+{
+    long double y;
+    long double sum;
+    int n,i;
+    i=1;
+    sum=0;
+    y=0;
+    cout<<"n";
+    cin>>n;
+    while(i<(n+1)){
+        sum=sin(i)+sum;
+        y=y+i/(sum);
+        i++;
+    }
+    cout<<y;
+}
 void opros(){
     int task_number;
 
@@ -552,6 +613,8 @@ void opros(){
     if(task_number==22){sixthytohex();}
    // if(task_number==23){torgash();}
     if(task_number==24){fail_sys();}
+    if(task_number==25){Fail_sos();}
+    if (task_number==26){rays();}
 }
 int main()
 {
