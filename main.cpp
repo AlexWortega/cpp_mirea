@@ -5,14 +5,16 @@
 // ыайл будет дополнятся кстати как и гит
 //дада там многое написано немного странно , но как правило это лень а не тупость автора
 // товарищи преподы пожалуйста не бейте автора, он просто хочет пить
+#include <cstdlib>
 #include<iostream>
 #include <cmath>
 #include <vector>
-//#include <random>
+//#include "stdafx.h"
+#include <random>
 #include <fstream>
 #include <string>
 #include <algorithm>
-#include <cstdlib>
+
 
 #include <cstdio>
 #include <windows.h>
@@ -555,6 +557,75 @@ void fail_sys()
         cout<<sum[i]<<endl;
     }
 }
+float f8(float arra[3][4], float arrb[4][2], int str, int stb) {
+    float a = 0;
+    for (int i = 0; i < 4; i++) {
+        a += arra[str][i] * arrb[i][stb];
+    }
+    return a;
+}
+
+
+void torgash ()
+{
+
+    //как меня заебал ссаный си . настоящий язык ублюдков ну честное слово тупое говно тупового говна сукааааааааааааааааааааа
+    //price = [  [1,2,3],[1,2,3],[1,2,3],[1,2,3] ];
+    float arra[3][4]{
+            {5, 2, 0, 10},
+            {3, 5, 2, 5},
+            {20, 0, 0, 0}
+    };
+    float arrb[4][2]{
+            {1.2, 0.5},
+            {2.8, 0.4},
+            {5.0, 1.0},
+            {2.0, 1.5}
+    };
+    float arrc[3][2]{
+            {f8(arra,arrb,0,0),f8(arra,arrb,0,1)},
+            {f8(arra,arrb,1,0),f8(arra,arrb,1,1)},
+            {f8(arra,arrb,2,0),f8(arra,arrb,2,1)}
+    };
+
+    cout << "1)Max getted - ";
+    if (arrc[0][0] > arrc[1][0] && arrc[0][0] > arrc[2][0]) { cout << "1"; }
+    else { if (arrc[1][0] > arrc[0][0] && arrc[1][0] > arrc[2][0]) { cout << "2"; }
+        else { { cout << "3"; } } }
+    cout << " S - ";
+    if (arrc[0][0] < arrc[1][0] && arrc[0][0] < arrc[2][0]) { cout << "1\n"; }
+    else {if (arrc[1][0] < arrc[0][0] && arrc[1][0] < arrc[2][0]) { cout << "2\n"; }
+        else  { cout << "3\n"; } }
+
+    cout << "2) max kommi ";
+    if (arrc[0][1] > arrc[1][1] && arrc[0][1] > arrc[2][1]) { cout << "1"; }
+    else {if (arrc[1][1] > arrc[0][1] && arrc[1][1] > arrc[2][1]) { cout << "2"; }
+        else { { cout << "3"; } }}
+    cout << " min commi - ";
+    if (arrc[0][1] < arrc[1][1] && arrc[0][1] < arrc[2][1]) { cout << "1\n"; }
+    else {if (arrc[1][1] < arrc[0][1] && arrc[1][1] < arrc[2][1]) { cout << "2\n"; }
+        else { cout << "3\n"; }}
+
+    float s = 0;
+    for (int i = 0; i < 3; i++) {
+        s += arrc[i][0];
+    }
+    cout << "3) Sum " << s << endl;
+
+    float sk = 0;
+    for (int i = 0; i < 3; i++) {
+        sk += arrc[i][1];
+    }
+    cout << "4) Kommisiya " << sk << "\n";
+
+    cout << "5) Sum of the summmest " << s+sk << endl;
+    cout << "\n--------------------------------------------\n\n";
+
+
+
+
+}
+
 void rays()
 {
     long double y;
@@ -571,6 +642,196 @@ void rays()
         i++;
     }
     cout<<y;
+}
+int fact(int n)
+{
+    if (n < 0)
+        return (0);
+    if (n == 0)
+        return (1);
+    else
+        return n * fact(n-1);
+}
+
+
+void fail_for_bdsm(){
+    string line;
+    double  sum;
+    char *c;
+    int x, r, q;
+    ifstream myfile("test.txt");
+    if (myfile.is_open())
+    {
+        while (getline(myfile, line))
+        {
+            sum = 0;
+            if (line[0] == '+')
+            {
+                for (int i = 1; line[i]; i++)
+                {
+                    if (line[i] != ' ')
+                    {
+                        c = &line[i];
+                        sum += atol(c);
+                        while (line[i] != ' ')
+                            i++;
+                    }
+                }
+                cout << "The sum if : " << sum << endl;
+            }
+            if (line[0] == '*')
+            {
+                x = 2;
+                c = &line[1];
+                q = atol(c);
+                while(line[x] != ' ')
+                    x++;
+                c = &line[x];
+                r = atol(c);
+                cout<<q<<" * "<<r<<" = "<<q*r<<endl;
+            }
+            if (line[0] == '/')
+            {
+                c = &line[1];
+                if (atol(c) != 0)
+                {
+                    sum = 1.0/(double)atol(c);
+                    cout << "1/" <<atol(c)<<"="<< sum << endl;
+                }
+                else
+                    cout <<"error\n";
+            }
+            if (line[0] == '!')
+            {
+                c = &line[1];
+                x = atol(c);
+                if (x < 13)
+                {
+                    sum = fact(x);
+                    cout << x << "! = " << sum << endl;
+                }
+                else
+                    cout <<"owerfall\n";
+            }
+            if(line[0] == 'M'){
+                int number = line.length();
+                int max = -1;
+                // for (int i = 0 ; i< number;i++)
+                //  {
+                //      line[i] = rand();
+                //надо было его доделать но мне так лень
+
+                //   }
+                for (int i = 0 ; i< number;i++)
+                {   //cout<<line<<endl;
+                    int k = line[i];
+                    if(isdigit(k))
+                    {
+                        if (max < k -48 ){
+                            max = k -48;
+                        }
+
+                    }
+                        //cout<<int(k)<<endl;
+                        // cout<<sum<<endl;
+
+
+                    }//fffffffffffff gjiikj dct yf[eeeeeeq ffffff gjikj dct d gbple
+                cout<< "Max - "<<max<<endl;
+
+            }
+            if(line[0] == 'X'){
+                int number = line.length();
+                int min = INT_MAX;//техникали тут должен быть макс инт
+                // for (int i = 0 ; i< number;i++)
+                //  {
+                //      line[i] = rand();
+                //надо было его доделать но мне так лень
+
+                //   }
+                for (int i = 0 ; i< number;i++)
+                {   //cout<<line<<endl;
+                    int k = line[i];
+                    if(isdigit(k))
+                    {
+                        if (min > k -48 ){
+                            min = k -48;
+                        }
+
+                    }
+                    //cout<<int(k)<<endl;
+                    // cout<<sum<<endl;
+
+
+                }//fffffffffffff gjiikj dct yf[eeeeeeq ffffff gjikj dct d gbple
+                cout<< "Min - "<<min<<endl;
+
+            }
+
+    }
+    myfile.close();
+}
+
+}
+//если есть в этом мире чтот то  проги в три утра в элке то только прогна в четыре утра в элке с рсак в ушах ыыыыы
+void perestanovka(int m,int n){
+
+
+}
+void shariki()
+{
+ int n = 0 ,m = 1;
+
+ cout<<"n- ";
+
+ cin>>n;
+ if(n<=0){cout<<" no " ;}
+ int a[n];
+
+ for(int i;i<n;++i){
+   a[i] = i;
+    }
+
+ for(int i; i<n;++i){
+    if( m==i ){
+        cout<< m;
+    m ++;
+    }
+    else( swap(a[i],a[m]) );
+
+ }
+ //perestanovka(1,n);
+
+
+ for(auto s : a){cout<<s<<" ";}
+
+}
+void spinx(){
+ int q = 0;
+ bool on=true;
+ q = 5567;
+ string ans;
+ //cout<<q;
+ while (on){
+     cout<<"chose your number";
+     cin>>ans;
+     string  ans2 ;
+     auto  str =  to_string(q);
+     //auto ans_str = to_string(ans);
+     int length = str.length();
+
+     for(int i= 0; i<length;++i)
+     {
+         if(str[i]==ans[i]){cout<<"+ ";}
+
+         else{ cout<<"- "; }
+     }
+     cout<< " do you wanna try again?yes/no";
+     cin>>ans2;
+     if(ans2=="no"){on= false;}
+    else{continue;}
+ }
+
 }
 void opros(){
     int task_number;
@@ -599,10 +860,13 @@ void opros(){
     if(task_number==20){resheto();}
     if(task_number==21){autodetect();}
     if(task_number==22){sixthytohex();}
-   // if(task_number==23){torgash();}
+    if(task_number==23){torgash();}
     if(task_number==24){fail_sys();}
     if(task_number==25){Fail_sos();}
     if (task_number==26){rays();}
+    if(task_number==27){fail_for_bdsm();}
+    if(task_number==28){shariki();}
+    if(task_number==29){spinx();}
 }
 int main()
 {
