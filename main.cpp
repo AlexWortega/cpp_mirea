@@ -14,7 +14,7 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
-
+#include <stdlib.h>
 
 #include <cstdio>
 #include <windows.h>
@@ -809,12 +809,17 @@ void shariki()
 void spinx(){
  int q = 0;
  bool on=true;
- q = 5567;
+ bool play=true;
+ srand(1000);
+ q = rand();
  string ans;
+ //cout<<q;
  //cout<<q;
  while (on){
      cout<<"chose your number";
      cin>>ans;
+     int pop =0 ;
+     int choice =0;
      string  ans2 ;
      auto  str =  to_string(q);
      //auto ans_str = to_string(ans);
@@ -822,14 +827,24 @@ void spinx(){
 
      for(int i= 0; i<length;++i)
      {
-         if(str[i]==ans[i]){cout<<"+ ";}
+         if(str[i]==ans[i]){cout<<"+";
+         pop++;
+         }
+         else{ cout<<"- ";
+             pop=0;
+         }
+        if(pop == length){cout<<"YOU WIN "<<" from- "<<choice<<" try";
+            break;
+            play = false;
+        }
 
-         else{ cout<<"- "; }
      }
-     cout<< " do you wanna try again?yes/no";
-     cin>>ans2;
-     if(ans2=="no"){on= false;}
-    else{continue;}
+     if(play!= false){choice++;
+         cout<< " Its you "<<choice<<" Do you wanna try again?yes/no"<<endl;
+         cin>>ans2;
+         if(ans2=="no"){on= false;}
+         else{continue;}}
+
  }
 
 }
