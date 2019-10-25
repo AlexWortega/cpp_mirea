@@ -773,14 +773,14 @@ void fail_for_bdsm(){
 }
 
 }
-//если есть в этом мире чтот то  проги в три утра в элке то только прогна в четыре утра в элке с рсак в ушах ыыыыы
+//если есть в этом мире [eqyz t,fyfz z t,fk dct 'nj d gbple ccfybye jrhe;f.oe. vtyzss
 void perestanovka(int m,int n){
 
 
 }
 void shariki()
 {
- int n = 0 ,m = 1;
+ int n = 0 ,m = 10;
 
  cout<<"n- ";
 
@@ -788,13 +788,13 @@ void shariki()
  if(n<=0){cout<<" no " ;}
  int a[n];
 
- for(int i;i<n;++i){
+ for(int i=0;i<n;++i){
    a[i] = i;
     }
 
- for(int i; i<n;++i){
-    if( m==i ){
-        cout<< m;
+ for(int i=0; i<n;++i){
+    if( m==a[i] ){
+        cout<< m <<' ';
     m ++;
     }
     else( swap(a[i],a[m]) );
@@ -802,15 +802,50 @@ void shariki()
  }
  //perestanovka(1,n);
 
+//shariki();
+// for(auto s : a){cout<<s<<" ";}
+for(int i =0; i<n;++i){
+   // cout<<a[i]<<' ';
+}
+}
+//очевидно ханойские башни
+void hanoi_towers(int quantity, int from, int to, int buf_peg)   //qanty - ring
+{                                                         //buf - buffer
+    if (quantity != 0)
+    {
+        hanoi_towers(quantity-1, from, buf_peg, to);
 
- for(auto s : a){cout<<s<<" ";}
+        cout << from << " -> " << to << endl;
+
+        hanoi_towers(quantity-1, buf_peg, to, from);
+    }
+}
+
+void hanoy(){
+
+    int start_peg, destination_peg, buffer_peg, plate_quantity;
+    cout << "First:" << endl;
+    cin  >> start_peg;
+    cout << "last:" << endl;
+    cin  >> destination_peg;
+    cout << "Buffer peg:" << endl;
+    cin  >> buffer_peg;
+    cout << "Rings:" << endl;
+    cin  >> plate_quantity;
+
+    hanoi_towers(plate_quantity, start_peg, destination_peg, buffer_peg);
 
 }
+
+
+
 void spinx(){
  int q = 0;
  bool on=true;
  bool play=true;
- srand(1000);
+ int seed;
+ cin>>seed;
+ srand(seed);
  q = rand();
  string ans;
  //cout<<q;
@@ -882,6 +917,7 @@ void opros(){
     if(task_number==27){fail_for_bdsm();}
     if(task_number==28){shariki();}
     if(task_number==29){spinx();}
+    if(task_number==30){hanoy();}
 }
 int main()
 {
