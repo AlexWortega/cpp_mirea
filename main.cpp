@@ -8,20 +8,23 @@
 #include <cstdlib>
 #include<iostream>
 #include <cmath>
+#include <random>
 #include <vector>
 //#include "stdafx.h"
 #include <random>
 #include <fstream>
 #include <string>
 #include <algorithm>
-#include <stdlib.h>
+#include <cstdlib>
 
 #include <cstdio>
 #include <windows.h>
 //#include <dos.h>
 //#include<graphics.h>
 using namespace std;
-
+int *m=new int [4];
+int *q=new int [4];
+static int sproba=0;
 #define PI 3.14
 //task first laba nomer dva
 
@@ -774,40 +777,12 @@ void fail_for_bdsm(){
 
 }
 //если есть в этом мире [eqyz t,fyfz z t,fk dct 'nj d gbple ccfybye jrhe;f.oe. vtyzss
-void perestanovka(int m,int n){
 
-
-}
-void shariki()
-{
- int n = 0 ,m = 10;
-
- cout<<"n- ";
-
- cin>>n;
- if(n<=0){cout<<" no " ;}
- int a[n];
-
- for(int i=0;i<n;++i){
-   a[i] = i;
-    }
-
- for(int i=0; i<n;++i){
-    if( m==a[i] ){
-        cout<< m <<' ';
-    m ++;
-    }
-    else( swap(a[i],a[m]) );
-
- }
  //perestanovka(1,n);
 
 //shariki();
 // for(auto s : a){cout<<s<<" ";}
-for(int i =0; i<n;++i){
-   // cout<<a[i]<<' ';
-}
-}
+
 //очевидно ханойские башни
 void hanoi_towers(int quantity, int from, int to, int buf_peg)   //qanty - ring
 {                                                         //buf - buffer
@@ -836,6 +811,8 @@ void hanoy(){
     hanoi_towers(plate_quantity, start_peg, destination_peg, buffer_peg);
 
 }
+
+
 unsigned factorial(unsigned n) {
     return ((n > 1) ? n * factorial(n - 1) : n);
 }
@@ -859,62 +836,95 @@ unsigned getMismatchCount(bool select[], unsigned n, unsigned step = 0) {
 }
 
 int shari() {
-    const unsigned N = 10;
+    unsigned N;
     bool select[N];
 
     for (auto &f : select) {
         f = false;
     }
-
+    cin>>N;
     cout << factorial(N) - getMismatchCount(select, N) << endl;
 
     return 0;
 }
 
 
-void spinx(){
- int q = 0;
- bool on=true;
- bool play=true;
- int seed;
- cin>>seed;
- srand(seed);
- q = rand();
- string ans;
- //cout<<q;
- //cout<<q;
- while (on){
-     cout<<"chose your number";
-     cin>>ans;
-     int pop =0 ;
-     int choice =0;
-     string  ans2 ;
-     auto  str =  to_string(q);
-     //auto ans_str = to_string(ans);
-     int length = str.length();
 
-     for(int i= 0; i<length;++i)
-     {
-         if(str[i]==ans[i]){cout<<"+";
-         pop++;
-         }
-         else{ cout<<"- ";
-             pop=0;
-         }
-        if(pop == length){cout<<"YOU WIN "<<" from- "<<choice<<" try";
-            break;
-            play = false;
+bool contains_duplicates(std::string s)
+{
+    std::sort(s.begin(), s.end());
+    return std::adjacent_find(s.begin(), s.end()) != s.end();
+}
+
+void game()
+{
+    typedef std::string::size_type index;
+
+    std::string symbols = "0123456789";
+    unsigned int const selection_length = 4;
+
+    std::shuffle(symbols.begin(), symbols.end(), std::mt19937(std::random_device()()));
+    std::string selection = symbols.substr(0, selection_length);
+    std::string guess;
+
+    while (std::cout << "Your guess? ", std::getline(std::cin, guess))
+    {
+        if (guess.length() != selection_length
+            || guess.find_first_not_of(symbols) != std::string::npos
+            || contains_duplicates(guess))
+        {
+            std::cout << guess << " is not a valid guess!";
+            continue;
         }
 
-     }
-     if(play!= false){choice++;
-         cout<< " Its you "<<choice<<" Do you wanna try again?yes/no"<<endl;
-         cin>>ans2;
-         if(ans2=="no"){on= false;}
-         else{continue;}}
+        unsigned int bulls = 0;
+        unsigned int cows = 0;
+        for (index i = 0; i != selection_length; ++i)
+        {
+            index pos = selection.find(guess[i]);
+            if (pos == i)
+                ++bulls;
+            else if (pos != std::string::npos)
+                ++cows;
+        }
+        //std::cout << bulls << " bulls, " << cows << " cows.\n";
+        for(int h=0;h<bulls;h++){cout<<"+";}
+        for(int h=0;h<cows;h++){cout<<"-";}
 
- }
-
+        if (bulls == selection_length)
+        {
+            std::cout << "Congratulations! You have won!\n";
+            return;
+        }
+    }
+    std::cerr << "Oops! Something went wrong with input, or you've entered end-of-file!\nExiting ...\n";
+    std::exit(EXIT_FAILURE);
+}
+int bullandcow()
+{
+    std::cout << "Welcome to bulls and cows!\nDo you want to play? ";
+    std::string answer;
+    while (true)
+    {
+        while (true)
+        {
+            if (!std::getline(std::cin, answer))
+            {
+                std::cout << "I can't get an answer. Exiting.\n";
+                return EXIT_FAILURE;
+            }
+            if (answer == "yes" || answer == "Yes" || answer == "y" || answer == "Y")
+                break;
+            if (answer == "no" || answer == "No" || answer == "n" || answer == "N")
+            {
+                std::cout << "Ok. Goodbye.\n";
+                return EXIT_SUCCESS;
+            }
+            std::cout << "Please answer yes or no: ";
+        }
+        game();
+        std::cout << "Another game? ";
+    }
 }
 void opros(){
     int task_number;
@@ -949,7 +959,7 @@ void opros(){
     if (task_number==26){rays();}
     if(task_number==27){fail_for_bdsm();}
     if(task_number==28){shari();}
-    if(task_number==29){spinx();}
+    if(task_number==29){bullandcow();}
     if(task_number==30){hanoy();}
 }
 int main()
