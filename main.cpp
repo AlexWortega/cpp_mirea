@@ -824,19 +824,52 @@ void hanoi_towers(int quantity, int from, int to, int buf_peg)   //qanty - ring
 void hanoy(){
 
     int start_peg, destination_peg, buffer_peg, plate_quantity;
-    cout << "First:" << endl;
-    cin  >> start_peg;
-    cout << "last:" << endl;
-    cin  >> destination_peg;
-    cout << "Buffer peg:" << endl;
-    cin  >> buffer_peg;
+  // cout << "First:" << endl;
+    start_peg = 1;
+    //cout << "last:" << endl;
+     destination_peg =3 ;
+    //"Buffer peg:" ;
+     buffer_peg =2;
     cout << "Rings:" << endl;
     cin  >> plate_quantity;
 
     hanoi_towers(plate_quantity, start_peg, destination_peg, buffer_peg);
 
 }
+unsigned factorial(unsigned n) {
+    return ((n > 1) ? n * factorial(n - 1) : n);
+}
 
+unsigned getMismatchCount(bool select[], unsigned n, unsigned step = 0) {
+    unsigned count = 0;
+    if (step >= n) {
+        count = 1;
+    }
+    else {
+        for (unsigned i = 0; i < n; i++) {
+            if ((i != step) && !select[i]) {
+                select[i] = true;
+                count += getMismatchCount(select, n, step + 1);
+                select[i] = false;
+            }
+        }
+    }
+
+    return count;
+}
+
+int shari() {
+    const unsigned N = 10;
+    bool select[N];
+
+    for (auto &f : select) {
+        f = false;
+    }
+
+    cout << factorial(N) - getMismatchCount(select, N) << endl;
+
+    return 0;
+}
 
 
 void spinx(){
@@ -915,7 +948,7 @@ void opros(){
     if(task_number==25){Fail_sos();}
     if (task_number==26){rays();}
     if(task_number==27){fail_for_bdsm();}
-    if(task_number==28){shariki();}
+    if(task_number==28){shari();}
     if(task_number==29){spinx();}
     if(task_number==30){hanoy();}
 }
