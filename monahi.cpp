@@ -1,5 +1,5 @@
 #include <iostream>
-
+// Решение основано на коде Ильи толоконникова
 using namespace std;
 int rows = 6;
 int cols = 4;
