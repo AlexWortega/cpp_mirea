@@ -82,6 +82,7 @@ int main ()
                   string k = a[i][j];
 
                   for(int n =0;n< 4;++n ){
+                  //еще говнокода
                       if (k[n]==alph1){k.replace(k.find(alph1),1,"1");}
                       if (k[n]==alph2){k.replace(k.find(alph2),1,"2");}
                       if (k[n]==alph3){k.replace(k.find(alph3),1,"3");}
