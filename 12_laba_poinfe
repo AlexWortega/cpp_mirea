@@ -1,0 +1,152 @@
+//афффтор все еще хочет кушать и будет рад если вы кините ему денег/принесете еды
+#pragma hdrstop
+
+#include <tchar.h>
+#pragma argsused
+#include <stdio.h>
+#include <iostream>
+#include <conio.h>
+
+#include <string>
+
+#include <cstdlib>
+
+using namespace std;
+
+int getRandomNumber(int min, int max)
+{
+//кончил от рандома
+    static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
+
+    return static_cast<int>(rand() * fraction * (max - min + 1) + min);
+}
+
+string randomizer(char a1, char a2, char a3, char a4){
+  //вообще надо фиксить этот говнокод но мне лень и мне похуй. Так что сразу отьебитесь от меня и вообще, если смотришь это то не выебывайся. псина
+  
+  
+  string str;
+    char alph[4];
+    alph[0]=a1;
+    alph[1]=a2;
+    alph[2]=a3;
+    alph[3]=a4;
+
+    int a= getRandomNumber(0,3);
+    int b= getRandomNumber(0,3);
+    int c= getRandomNumber(0,3);
+    int d= getRandomNumber(0,3);
+    string st(1,alph[a]);
+    string st1(1,alph[b]);
+    string st2(1,alph[c]);
+    string st3(1,alph[d]);
+    str= st+st1+st2+st3;
+    return  str;
+
+}
+int main ()
+{
+    char alph1,alph2,alph3;
+    char alph4;
+    string ans;
+  int M,buf;
+  cout<<"Input M-";
+  cin>>M;
+
+
+  if (M>5 || M<2){cout<<"impossible";}
+
+  else{
+      cout<<"Input alph1:";
+      cin>>alph1;
+      cout<<"Input alph2:";
+      cin>>alph2;
+      cout<<"Input alph3:";
+      cin>>alph3;
+      cout<<"Input alph3:";
+      cin>>alph4;
+      string a[M][M];
+      cout<<"Manual or auto (m/a)?";
+      cin>> ans;
+
+      if (ans=="m"){
+ //тута идет ввод для мануального режима
+          for (int  i=0;i<M;++i){
+              for(int j =0 ; j<M; ++j){
+                  cout<<"M"<<"["<<i<<"]"<<"["<<j<<"]";
+                  cin>>a[i][j];
+              }
+          }
+          for (int  i=0; i<M;++i){
+              for(int j =0  ; j<M; ++j){
+                  string k = a[i][j];
+
+                  for(int n =0;n< 4;++n ){
+                      if (k[n]==alph1){k.replace(k.find(alph1),1,"1");}
+                      if (k[n]==alph2){k.replace(k.find(alph2),1,"2");}
+                      if (k[n]==alph3){k.replace(k.find(alph3),1,"3");}
+                      if (k[n]==alph4){k.replace(k.find(alph4),1,"4");}
+
+
+                        a[i][j]=k;
+                  }
+
+              }
+
+
+          }
+
+          for (int  i=0;i<M;++i){
+              cout<<endl;
+              for(int j =0 ; j<M; ++j){
+
+                  cout<<a[i][j]<<" ";
+              }
+
+          }
+
+      }
+      else{
+          for (int  i=0;i<M;++i){
+              for(int j =0 ; j<M; ++j){
+                a[i][j]=randomizer(alph1,alph2,alph3,alph4);
+                     
+
+              }
+
+          }
+
+          for (int  i=0; i<M;++i){
+              for(int j =0  ; j<M; ++j){
+                  string k = a[i][j];
+
+                  for(int n =0;n< 4;++n ){
+                      if (k[n]==alph1){k.replace(k.find(alph1),1,"1");}
+                      if (k[n]==alph2){k.replace(k.find(alph2),1,"2");}
+                      if (k[n]==alph3){k.replace(k.find(alph3),1,"3");}
+                      if (k[n]==alph4){k.replace(k.find(alph4),1,"4");}
+
+
+                      a[i][j]=k;
+                  }
+
+              }
+
+
+          }
+
+          for (int  i=0;i<M;++i){
+              cout<<endl;
+              for(int j =0 ; j<M; ++j){
+
+                  cout<<a[i][j]<<" ";
+              }
+
+          }
+
+
+      }
+
+  }
+
+}
