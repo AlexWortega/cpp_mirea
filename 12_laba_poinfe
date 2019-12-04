@@ -14,7 +14,7 @@
 using namespace std;
 
 int getRandomNumber(int min, int max)
-{
+{ // самый охуенный рандом  в си который ты видел
     static const double fraction = 1.0 / (static_cast<double>(RAND_MAX) + 1.0);
 
     return static_cast<int>(rand() * fraction * (max - min + 1) + min);
@@ -27,7 +27,7 @@ string randomizer(char a1, char a2, char a3, char a4){
     alph[1]=a2;
     alph[2]=a3;
     alph[3]=a4;
-
+//генератор строки из символов
     int a= getRandomNumber(0,3);
     int b= getRandomNumber(0,3);
     int c= getRandomNumber(0,3);
@@ -40,6 +40,7 @@ string randomizer(char a1, char a2, char a3, char a4){
     return  str;
 
 }
+// тута охуенный ввод
 int Vlaue(){
     int a;
     while (true){
